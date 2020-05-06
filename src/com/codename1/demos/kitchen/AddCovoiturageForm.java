@@ -5,10 +5,14 @@
  */
 package com.codename1.demos.kitchen;
 
+import com.codename1.components.SpanLabel;
 import com.codename1.l10n.ParseException;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
+import static com.codename1.ui.CN.CENTER;
 import static com.codename1.ui.CN.SOUTH;
+import static com.codename1.ui.CN.execute;
+import static com.codename1.ui.CN.getCurrentForm;
 import static com.codename1.ui.CN.isTablet;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
@@ -39,6 +43,17 @@ import services.ServiceOffre;
  * @author Asus
  */
 public class AddCovoiturageForm extends Demo {
+    
+     private void showDemoInformation(Form back, Demo d) {
+        Form f = new Form("Information", new BorderLayout());
+        Button sourceCode = new Button("View Source");
+        FontImage.setMaterialIcon(sourceCode, FontImage.MATERIAL_WEB);
+        sourceCode.addActionListener(e -> execute(d.getSourceCodeURL()));
+        f.add(CENTER, new SpanLabel(d.getDescription())).
+                add(SOUTH, sourceCode);
+        f.getToolbar().setBackCommand("", e -> back.showBack());
+        f.show();
+    }
     
      public String getDisplayName() {
         return "Covoiturage";
@@ -130,7 +145,20 @@ public class AddCovoiturageForm extends Demo {
                        float id = ServiceOffre.getInstance().ajoutOffre(o);
                         if( id != 0)
                         {
-                             //new AddTypeForm((int)id).show();
+                             Demo d = new AddTypeForm((int)id);
+                             
+                              Form previous = getCurrentForm();
+                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                f.add(CENTER, d.createDemo(f));
+                f.getToolbar().setBackCommand(" ", ee -> {
+                    if(d.onBack()){
+                        previous.showBack();
+                    }
+                });
+                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                    showDemoInformation(f, d);
+                });
+                f.show();
                         }
                             
                         else
