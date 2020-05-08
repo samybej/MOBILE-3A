@@ -227,6 +227,7 @@ public class KitchenSink  {
             new AddCovoiturageForm(),
             new Themes(), new Contacts(),
             new Input(), 
+            new ListeCovoituragesForm(),
             new Video(), new SalesDemo(),
         };
         

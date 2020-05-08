@@ -216,11 +216,15 @@ public class ServiceOffre {
         try {
             offres=new ArrayList<>();
             types=new ArrayList<>();
+            map = new HashMap<>();
+            
             JSONParser j = new JSONParser();
             Map<String,Object> offresListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
             List<Map<String,Object>> list = (List<Map<String,Object>>)offresListJson.get("root");
+            
             for(Map<String,Object> obj : list){
+
                 Offre o = new Offre();
                 
                 Type t = new Type();
@@ -258,16 +262,16 @@ public class ServiceOffre {
                 t.setTmpArret((int)tmpArret);
                 t.setIdOffre((int)idOffre);
                 
-               // System.out.println(t);
+                System.out.println(t);
+                System.out.println(o);
                 
                 offres.add(o);
                 types.add(t);
-                
-                map.put(1,offres);
-                map.put(2,types);
-                
+                         
             }
             
+              map.put(1,offres);
+              map.put(2,types);
             
         } catch (IOException ex) {
             

@@ -147,19 +147,19 @@ public class AddCovoiturageForm extends Demo {
                         {
                              Demo d = new AddTypeForm((int)id);
                              
-                              Form previous = getCurrentForm();
-                Form f = new Form(d.getDisplayName(), new BorderLayout());
-                f.add(CENTER, d.createDemo(f));
-                f.getToolbar().setBackCommand(" ", ee -> {
-                    if(d.onBack()){
-                        previous.showBack();
-                    }
-                });
-                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
-                    showDemoInformation(f, d);
-                });
-                f.show();
-                        }
+                                Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+                                        }
                             
                         else
                         {
