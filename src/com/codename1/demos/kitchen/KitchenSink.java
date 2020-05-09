@@ -51,6 +51,9 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 
 public class KitchenSink  {
+    
+    private static int idClientLogged;
+    
     private Resources res;
     private Form currentForm;
     private Container tabletSurface;
@@ -67,6 +70,16 @@ public class KitchenSink  {
     private int[] colors;
     private Image[] colorBottoms;
     private int currentColor;
+
+    public static int getIdClientLogged() {
+        return idClientLogged;
+    }
+
+    public static void setIdClientLogged(int idClientLogged) {
+        KitchenSink.idClientLogged = idClientLogged;
+    }
+    
+    
     
     public void init(Object context){
         // use 2 network threads for slightly faster networking but not too much to overburden the UI
@@ -124,7 +137,7 @@ public class KitchenSink  {
         return dc;
     }
         
-    private void showSplashAnimation() {
+    public void showSplashAnimation() {
         Form splash = new Form(new LayeredLayout());
         splash.setUIID("Splash");
         splash.getContentPane().setUIID("Container");
@@ -215,7 +228,8 @@ public class KitchenSink  {
             currentForm.show();
             return;
         }
-        showSplashAnimation();
+     //   showSplashAnimation();
+     new LoginForm(res).show();
     }
 
     private void showMainUI() {

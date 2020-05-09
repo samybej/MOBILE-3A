@@ -17,6 +17,8 @@ public class Client {
     private String adresse;
     private String mdp;
     private String mail;
+    private int etatCompte;
+
 
     public Client() {
     }
@@ -39,7 +41,30 @@ public class Client {
         this.mdp = mdp;
         this.mail = mail;
     }
+    
+    public Client(int id, String nom, String prenom, int tel, String mail, String mdp, String adresse, int etatCompte ) {
+        this.id = id;
+        this.nom = nom; 
+        this.prenom = prenom;
+        this.tel = tel; 
+        this.mail = mail; 
+        this.mdp = mdp; 
+        this.adresse = adresse; 
+        this.etatCompte = etatCompte; 
+        }
+    
+     public Client(String nom, String prenom, int tel, String mail, String mdp, String adresse, int etatCompte ) {
+    
+        this.nom = nom; 
+        this.prenom = prenom;
+        this.tel = tel; 
+        this.mail = mail; 
+        this.mdp = mdp; 
+        this.adresse = adresse; 
+        this.etatCompte = etatCompte; 
+    }
 
+     
     public int getId() {
         return id;
     }
@@ -96,6 +121,15 @@ public class Client {
         this.mail = mail;
     }
 
+    public int getEtatCompte() {
+        return etatCompte;
+    }
+
+    public void setEtatCompte(int etatCompte) {
+        this.etatCompte = etatCompte;
+    }
+    
+    
     @Override
     public String toString() {
         return "Client{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", tel=" + tel + ", adresse=" + adresse + ", mdp=" + mdp + ", mail=" + mail + '}';

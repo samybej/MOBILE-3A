@@ -145,7 +145,7 @@ public class AddCovoiturageForm extends Demo {
                        float id = ServiceOffre.getInstance().ajoutOffre(o);
                         if( id != 0)
                         {
-                             Demo d = new AddTypeForm((int)id);
+                                 Demo d = new AddTypeForm((int)id);
                              
                                 Form previous = getCurrentForm();
                                 Form f = new Form(d.getDisplayName(), new BorderLayout());
