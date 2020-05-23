@@ -54,19 +54,22 @@ import com.codename1.ui.table.TableLayout;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.RegexConstraint;
 import com.codename1.ui.validation.Validator;
+import entities.Reservation;
 import java.io.IOException;
+import java.util.Date;
+import services.ServiceReservation;
 
 /**
  * Demonstrates basic usage of input facilities, device orientation behavior as well as adapting the UI to tablets.
  * This demo shows off a typical form with user information, different keyboard types, ability to capture an 
  * avatar image and style it etc.
  *
- * @author .
+ * @author iyadh wejh el 9a7ba 
  */
 public class Input  extends Demo {
 
     public String getDisplayName() {
-        return "Reservation Taxi ";
+        return "Reservation";
     }
 
     public Image getDemoIcon() {
@@ -129,13 +132,22 @@ public class Input  extends Demo {
             @Override
             public void actionPerformed(ActionEvent evt) {
                  try {
-                   
+                        Date d = new Date();
                         
-                       // Reservation r = new Reservation(30,depart.getText(),arrive.getText(),Integer.parseInt(vehicule.getText()),4,209);
-                      /*  if( ServiceReservation.getInstance().ajoutReservation(r))
-                            Dialog.show("Success","Connection accepted",new Command("OK"));
+                        Reservation r = new Reservation(30.0f,depart.getText(),arrive.getText(),d,"taxi",4.0f,1,Integer.parseInt(vehicule.getText()),209);
+                        if( ServiceReservation.getInstance().ajoutReservation(r))
+                        {
+                            Dialog.show("Success","Reservation ajoutée ! ",new Command("OK"));
+                            Demo listRes = new ListeReservationForm();
+                            
+                            Form previous = getCurrentForm();
+                            Form f = new Form(listRes.getDisplayName(), new BorderLayout());
+                            f.add(CENTER, listRes.createDemo(f));
+                            f.show();
+                        }
+                            
                         else
-                            Dialog.show("ERROR", "Server error", new Command("OK"));*/
+                            Dialog.show("ERROR", "Server error", new Command("OK"));
 
                     } catch (NumberFormatException e) {
                         Dialog.show("ERROR", "Status must be a number", new Command("OK"));

@@ -42,6 +42,8 @@ import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.animations.ComponentAnimation;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
@@ -123,11 +125,116 @@ public class KitchenSink  {
                 Form previous = getCurrentForm();
                 Form f = new Form(d.getDisplayName(), new BorderLayout());
                 f.add(CENTER, d.createDemo(f));
-                f.getToolbar().setBackCommand(" ", ee -> {
+                
+            if (d.getDisplayName().equals("Covoiturage"))
+                {
+                      f.getToolbar().addCommandToSideMenu("rechercher", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new RechercherCovoiturageForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+      
+             
+                   f.getToolbar().addCommandToSideMenu("ajouter", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d =  new AddCovoiturageForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+         f.getToolbar().addCommandToSideMenu("mes covoiturages", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new ListeCovoituragesForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+                }
+            else if (d.getDisplayName().equals("Reservation"))
+            {
+                f.getToolbar().addCommandToSideMenu("mes reservations", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new ListeReservationForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+                 f.getToolbar().addCommandToSideMenu("Ajouter une reservation", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new Input();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+            }
+               f.getToolbar().setBackCommand(" ", ee -> {
                     if(d.onBack()){
                         previous.showBack();
                     }
                 });
+               
                 f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
                     showDemoInformation(f, d);
                 });
