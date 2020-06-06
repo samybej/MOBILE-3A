@@ -18,7 +18,10 @@ public class Client {
     private String mdp;
     private String mail;
     private int etatCompte;
-
+    private int point;
+    private int avertissement;
+    private int cadeau; 
+    private String image;
 
     public Client() {
     }
@@ -62,6 +65,9 @@ public class Client {
         this.mdp = mdp; 
         this.adresse = adresse; 
         this.etatCompte = etatCompte; 
+        this.point = 0;
+        this.avertissement = 0;
+        this.cadeau = 0;
     }
 
      

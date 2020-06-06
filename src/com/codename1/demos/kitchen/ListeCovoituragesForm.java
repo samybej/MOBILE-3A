@@ -102,8 +102,8 @@ public class ListeCovoituragesForm extends Demo {
                     c2.add("Vitesse : " + lbVitesse.getText());
                     c2.add("Nombre de pauses : " + lbNbrArrets.getText());
                     c2.add("Temps total d'arrets : " + lbTmpArret.getText());
-                    c2.add("");
-                    c2.add("");
+                    c2.add("************************************************");
+                    c2.add("************************************************");
                     
                     c1.add(c2);
                 }

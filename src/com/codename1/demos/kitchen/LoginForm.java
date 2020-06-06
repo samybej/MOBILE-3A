@@ -102,7 +102,10 @@ public class LoginForm extends Form {
         createNewAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-           
+                Demo d = new InscriptionForm(); 
+                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                f.show();
             }
         });
         

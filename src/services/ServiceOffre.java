@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import utils.Statics;
 
 /**
@@ -38,7 +39,7 @@ public class ServiceOffre {
     public ArrayList<Client> clients;
     public Map<Integer,List> map;
     public Map<Offre,Client> mapRecherche = new HashMap<>();
-    
+    public ArrayList<Double> statistiques;
     public static ServiceOffre instance=null;
     public boolean resultOK;
     public float id;
@@ -280,4 +281,44 @@ public class ServiceOffre {
         return map;
     }
 
+       public ArrayList<Double> getStatistiques()
+       {
+           String url = Statics.BASE_URL+"api/statistiquesCov";
+              req.setUrl(url);
+              req.setPost(false);
+              req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    
+                    statistiques = parseStatistiques(new String(req.getResponseData()));
+                    
+                    req.removeResponseListener(this);
+                } catch (IOException ex) {
+                    
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return statistiques;
+       }
+       
+       public ArrayList<Double> parseStatistiques(String jsonText) throws IOException
+       {
+           statistiques = new ArrayList<>();
+           JSONParser j = new JSONParser();
+            Map<String,Object> statJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            
+            List<Double> list = (List<Double>)statJson.get("root");
+            int i=0;
+            for(double obj : list){
+                i++;
+                double nbr = obj;
+                statistiques.add(nbr);
+                
+               // System.out.println(nbr);
+            }
+            
+            return statistiques;
+       }
 }

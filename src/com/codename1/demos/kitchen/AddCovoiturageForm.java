@@ -198,7 +198,7 @@ public class AddCovoiturageForm extends Demo {
                         Date date_formatted = format.parse(dateString);
                         
                         Offre o = new Offre(Integer.parseInt(nbPlace.getText()), depart.getText(),arrive.getText(),
-                        dateString, heure, Float.parseFloat(tarif.getText()),209,209, vehicule.getText(), bagage.getText());
+                        dateString, heure, Float.parseFloat(tarif.getText()),KitchenSink.getIdClientLogged(),KitchenSink.getIdClientLogged(), vehicule.getText(), bagage.getText());
                        float id = ServiceOffre.getInstance().ajoutOffre(o);
                         if( id != 0)
                         {

@@ -490,14 +490,21 @@ public class KitchenSink  {
             }
         });
 
+        f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_LOGOUT , new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                setIdClientLogged(0);
+                new LoginForm(res).show();
+            }
+        } );
         if(cnt.getLayout() instanceof GridLayout) {
             f.removeCommand(gridCommand);
         } else {
             f.removeCommand(listCommand);
         }
 
-        f.getToolbar().addMaterialCommandToSideMenu("CodenameOne.com", 
-                FontImage.MATERIAL_WEB, e -> execute("https://www.codenameone.com/"));
+        f.getToolbar().addMaterialCommandToSideMenu("Statistiques Covoiturage", 
+                FontImage.MATERIAL_WEB, e -> new StatistiquesForm());
         f.getToolbar().addMaterialCommandToSideMenu("Getting Started", FontImage.MATERIAL_WEB, e -> execute("https://www.codenameone.com/"));
         f.getToolbar().addMaterialCommandToSideMenu("Developer Guide", FontImage.MATERIAL_WEB, e -> execute("https://www.codenameone.com/files/developer-guide.pdf"));
         f.getToolbar().addMaterialCommandToSideMenu("JavaDoc (Reference)", FontImage.MATERIAL_WEB, e -> execute("https://www.codenameone.com/javadoc/"));
