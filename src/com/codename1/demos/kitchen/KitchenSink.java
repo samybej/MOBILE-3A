@@ -349,6 +349,8 @@ public class KitchenSink  {
             new Themes(), new Contacts(),
             new Input(), 
             new ListeCovoituragesForm(),
+            new AddNoteForm(),
+            new addReclamationForm(),
             new Video(), new SalesDemo(),
         };
         
