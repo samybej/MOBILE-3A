@@ -79,8 +79,8 @@ public class ServiceClient {
     }
     
     public boolean addClient(Client c) {
-        String url = Statics.BASE_URL + "api/client/" + c.getNom() + "/" + c.getPrenom()+ "/" + c.getTel()
-                + "/" + c.getMail()+ "/" + c.getMdp()+ "/" + c.getAdresse() + "/" + c.getEtatCompte();
+        String url = Statics.BASE_URL + "api/addclient/" + c.getNom() + "/" + c.getPrenom()+ "/" + c.getTel()
+                + "/" + c.getMail()+ "/" + c.getMdp()+ "/" + c.getAdresse();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

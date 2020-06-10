@@ -18,7 +18,10 @@ public class Client {
     private String mdp;
     private String mail;
     private int etatCompte;
-
+    private int point;
+    private int avertissement;
+    private int cadeau; 
+    private String image;
 
     public Client() {
     }
@@ -62,6 +65,23 @@ public class Client {
         this.mdp = mdp; 
         this.adresse = adresse; 
         this.etatCompte = etatCompte; 
+        this.point = 0;
+        this.avertissement = 0;
+        this.cadeau = 0;
+    }
+     public Client(String nom, String prenom, int tel, String mail, String mdp, String adresse, int etatCompte ,String imgPath) {
+    
+        this.nom = nom; 
+        this.prenom = prenom;
+        this.tel = tel; 
+        this.mail = mail; 
+        this.mdp = mdp; 
+        this.adresse = adresse; 
+        this.etatCompte = etatCompte; 
+        this.point = 0;
+        this.avertissement = 0;
+        this.cadeau = 0;
+        this.image=imgPath;
     }
 
      
@@ -127,6 +147,14 @@ public class Client {
 
     public void setEtatCompte(int etatCompte) {
         this.etatCompte = etatCompte;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

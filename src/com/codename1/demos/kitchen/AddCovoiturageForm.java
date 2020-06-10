@@ -51,7 +51,64 @@ public class AddCovoiturageForm extends Demo {
         sourceCode.addActionListener(e -> execute(d.getSourceCodeURL()));
         f.add(CENTER, new SpanLabel(d.getDescription())).
                 add(SOUTH, sourceCode);
-        f.getToolbar().setBackCommand("", e -> back.showBack());
+        //f.getToolbar().setBackCommand("", e -> back.showBack());
+         f.getToolbar().addCommandToSideMenu("rechercher", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new RechercherCovoiturageForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+         f.getToolbar().addCommandToSideMenu("ajouter", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d =  new AddCovoiturageForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
+         f.getToolbar().addCommandToSideMenu("mes covoiturages", null, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 Demo d = new ListeCovoituragesForm();
+                 
+                  Form previous = getCurrentForm();
+                                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                                f.getToolbar().setBackCommand(" ", ee -> {
+                                    if(d.onBack()){
+                                        previous.showBack();
+                                    }
+                                });
+                                f.getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_INFO, 4, ee -> {
+                                    showDemoInformation(f, d);
+                                });
+                                f.show();
+             }
+         });
         f.show();
     }
     
@@ -141,7 +198,7 @@ public class AddCovoiturageForm extends Demo {
                         Date date_formatted = format.parse(dateString);
                         
                         Offre o = new Offre(Integer.parseInt(nbPlace.getText()), depart.getText(),arrive.getText(),
-                        dateString, heure, Float.parseFloat(tarif.getText()),209,209, vehicule.getText(), bagage.getText());
+                        dateString, heure, Float.parseFloat(tarif.getText()),KitchenSink.getIdClientLogged(),KitchenSink.getIdClientLogged(), vehicule.getText(), bagage.getText());
                        float id = ServiceOffre.getInstance().ajoutOffre(o);
                         if( id != 0)
                         {

@@ -83,6 +83,7 @@ public class LoginForm extends Form {
                     KitchenSink ks = new KitchenSink();
                     KitchenSink.setIdClientLogged(id);
                     ks.init(CENTER);
+                   
                     ks.showSplashAnimation();
                     
                 }
@@ -98,6 +99,15 @@ public class LoginForm extends Form {
         
         Button createNewAccount = new Button("CREATE NEW ACCOUNT");
         createNewAccount.setUIID("CreateNewAccountButton");
+        createNewAccount.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Demo d = new InscriptionForm(); 
+                Form f = new Form(d.getDisplayName(), new BorderLayout());
+                                f.add(CENTER, d.createDemo(f));
+                f.show();
+            }
+        });
         
         // We remove the extra space for low resolution devices so things fit better
         Label spaceLabel;

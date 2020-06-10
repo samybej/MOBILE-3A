@@ -47,7 +47,7 @@ public class ServiceReservation {
     }
     
     public boolean ajoutReservation(Reservation r) {
-        String url = Statics.BASE_URL + "/api/reservations/" + r.getDepart()+ "/" + r.getArrive()+ "/" + r.getDate()+ "/" + r.getType()+ "/" + "/" + r.getTarif()+ "/" + r.getIdChauffeur()+ "/" + r.getIdClient();
+        String url = Statics.BASE_URL + "api/ajoutReservation/" + r.getDepart()+ "/" + r.getArrive()+ "/"  + r.getIdChauffeur()+ "/" + r.getIdClient();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

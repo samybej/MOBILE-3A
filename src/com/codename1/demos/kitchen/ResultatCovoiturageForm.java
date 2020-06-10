@@ -98,6 +98,7 @@ public class ResultatCovoiturageForm extends Demo {
              
              Button btn = new Button("S'inscrire");
              c2.add(btn);
+             c2.add("****************************************");
              
              
              
@@ -105,7 +106,7 @@ public class ResultatCovoiturageForm extends Demo {
                  @Override
                  public void actionPerformed(ActionEvent evt) {
                       
-                 if (ServiceOffre.getInstance().inscriOffre(o.getId(), 209, o.getIdOffreur()))  
+                 if (ServiceOffre.getInstance().inscriOffre(o.getId(), KitchenSink.getIdClientLogged(), o.getIdOffreur()))  
                     {
                        Dialog.show(" Success "," Inscription terminée ! ",new Command("OK"));
                     }
