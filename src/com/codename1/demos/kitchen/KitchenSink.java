@@ -228,8 +228,8 @@ public class KitchenSink  {
             currentForm.show();
             return;
         }
-     //   showSplashAnimation();
-     new LoginForm(res).show();
+       //showSplashAnimation();
+    new LoginForm(res).show();
     }
 
     private void showMainUI() {
@@ -243,6 +243,11 @@ public class KitchenSink  {
             new Input(), 
             new ListeCovoituragesForm(),
             new Video(), new SalesDemo(),
+            new RechercherCovoiturageForm(),
+           new ListFormation(),
+           new Postuler(),
+           new ParticiperFormation(),
+        
         };
         
         for(Demo d : demos) {
